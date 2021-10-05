@@ -135,7 +135,7 @@
 - Board
     - createBoard() ---> function to generate HTML for creating board
     - `board.array` ---> array with data from tiles clicked contained in it
-    - `board.tilesClicked` ---> stores count of tiles that have been clicked
+    - `board.tilesClicked` ---> stores count of tiles that have been clicked, increments each time onPress(true)
 
 - Game
     - init() ---> function to set onload state, where it starts a new Game and DISPLAY empty board and rest of HTML
@@ -151,5 +151,48 @@
     - showScore() ---> DISPLAY game.score with JS generated HTML
 
 ## MVC with Objects and Functions
+### class Tic Tac Toe
 1. **Model**
-    - 
+    - Game object
+        - game.currentPlayer
+        - game.score
+    - Board Object
+        - board.array
+        - board.tilesClicked
+    - Player Object
+        - player.name
+        - player.symbol
+        - player.totalWins
+
+2. **View**
+    - Board object
+        - board.createBoard()
+    - Game object
+        - game.showTie()
+        - game.showWin()
+        - game.showCurrentPlayer()
+        - game.showScore()
+
+3. **Controller**
+    - Game object
+        - game.init()
+        - game.restart()
+        - game.checkWin()
+        - game.checkTie()
+        - game.updateWin()
+
+### class Tile
+1. **Model**
+    - Square object
+        - square.value
+
+2. **View**
+    - Square object
+        - square.updateView()
+
+3. **Controller**
+    - Square object
+        - square.onPress()
+        - square.isLastClick()
+
+## Pseudocode
