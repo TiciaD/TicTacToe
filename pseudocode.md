@@ -84,4 +84,41 @@
       SHOW BOARD
 ```
 
+## Classes
+1. TicTacToe
+    - creates a player
+    - creates a game board
+    - keeps track of who's turn it is
+    - Resets game
+    - stores and checks win conditions
+    - OPTIONAL: stores symbol selected and player name
+    - Displays board
+    - stores state of the board
+
+2. Tile
+    - stores whether it's an 'X', 'O' or empty
+
 ## Objects
+1. Game
+    - store gameboard
+2. Player
+    - store last player to click on board
+    - OPTIONAL: store name and symbol selected
+
+3. Square
+    - 
+
+
+## Define Objects and Functions
+- Player
+    - isLastClick() ---> true/false, did this player just click a tile?
+    - `player.name` ---> store player name
+    - `player.symbol` ---> store player symbol, symbol will look like 'O' or 'X' and value will be 1 or 0
+    - `player.totalWins` ---> store number of wins by this player
+
+- Square
+    - onPress() ---> function that adds `player.symbol` to value of square
+    - `square.value` ---> value stored in square, starts as empty string
+
+- Board
+    - 
