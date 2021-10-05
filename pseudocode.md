@@ -35,5 +35,53 @@
 - A recreation of Chess
 
 ## Model View Controller (MVC)
-1. Model
-    - win conditions
+1. **Model** (stores data)
+    - store how many moves have been made, this helps to check for win condition   
+    *(input grabbed from controller)*
+    - store inputs made on the tiles, has it been clicked and what to assign to the tile i.e. 'X' or 'O'   
+    *(input grabbed from controller) (data sent to view)*
+    - store state of board/game, who's turn is it based on previous input, what's initially stored in the board if the game is reset   
+    *(input grabbed from controller) (data sent to view)*
+
+2. **View** (controls display)
+    - Show board differently based on last move that was made  
+     *(data grabbed from model)*
+    - Show initial state of board when restart is pressed  
+     *(data grabbed from model)*
+    - Show tile with 'X', 'O' or nothing based on input  
+     *(grabbed from model)*
+    - Show who's turn it is   
+    *(data grabbed from model)*
+    - Show win screen or tie screen based on game state   
+    *(data grabbed from model)*
+
+3. **Controller** (handles input)
+    - Handle tile clicks  
+    *(input sent to model)*
+    - Handle restart click  
+    *(input sent to model)*
+    - Tile is clickable once, only one input per tile   
+    *(data grabbed from model)*
+    - Calculate whether winner or tie can be declared based on moves made  
+    *(data grabbed from model)* *(input sent to model if true)*
+
+### Brief Overview of Flow
+```
+        START
+          |
+------SHOW BOARD
+|         |
+|     GET P1 INPUT
+|         |
+|   CHECK WIN CONDITION--------------
+|         |               |         |
+|     SHOW BOARD          |  SHOW WIN SCREEN
+|         |               |         |
+|     GET P2 INPUT        |        END
+|         |               |
+----CHECK WIN CONDITION----
+          |
+      SHOW BOARD
+```
+
+## Objects
