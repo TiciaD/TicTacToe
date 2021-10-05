@@ -97,17 +97,28 @@
 
 2. Tile
     - stores whether it's an 'X', 'O' or empty
+    - handles onClick event, stores whether it's been clicked
+    - generates HTML for each tile and updates display based on input
 
 ## Objects
 1. Game
     - store gameboard
+    - check for win/tie and change display if true
+    - display initial HTML on load
+    - store, update and display score
+    - store, update and display current player
+
 2. Player
     - store last player to click on board
     - OPTIONAL: store name and symbol selected
 
 3. Square
-    - 
+    - store value of each tile
+    - display 'X' or 'O' depending on value added
 
+4. Board
+    - generate tiles and display them
+    - generate array and store values in it based off of each square value
 
 ## Define Objects and Functions
 - Player
@@ -119,6 +130,26 @@
 - Square
     - onPress() ---> function that adds `player.symbol` to value of square
     - `square.value` ---> value stored in square, starts as empty string
+    - updateView() ---> function to DISPLAY 'X', 'O' or blank based on state
 
 - Board
+    - createBoard() ---> function to generate HTML for creating board
+    - `board.array` ---> array with data from tiles clicked contained in it
+    - `board.tilesClicked` ---> stores count of tiles that have been clicked
+
+- Game
+    - init() ---> function to set onload state, where it starts a new Game and DISPLAY empty board and rest of HTML
+    - restart() ---> function to reset board back to an empty array and blank board DISPLAY and start new Game
+    - `game.score` ---> increment each time checkWin(true)
+    - checkWin() ---> check win conditions and compare them to the current state, IF true also include *who* won
+    - checkTie() ---> check tie condition, board.tilesClicked = 9 and checkWin(false), IF true run showTie() 
+    - showTie() ---> DISPLAY HTML for tie declaration
+    - showWin() ---> DISPLAY HTML for win declaration along with the players name who won
+    - updateWin() ---> add to score of player IF checkWin(true)
+    - `game.currentPlayer` ---> IF isLastClicked(false), assign to that player
+    - showCurrentPlayer() ---> DISPLAY game.currentPlayer with JS generated HTML
+    - showScore() ---> DISPLAY game.score with JS generated HTML
+
+## MVC with Objects and Functions
+1. **Model**
     - 
