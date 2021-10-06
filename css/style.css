@@ -1,0 +1,20 @@
+.btn {
+    height: 25vw;
+    max-height: 215px;
+    max-width: 215px;
+    width: 100%;
+    font-size: 4vw;
+}
+.custMaxWidth{
+    max-width: 642px;
+}
+@media only screen and (min-width: 852px) {
+  #tile {
+    font-size: 34px;
+    height: 215px;
+  }
+}
+
+.btn:hover {
+  background-color: gray;
+}

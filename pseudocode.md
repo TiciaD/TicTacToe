@@ -80,13 +80,12 @@
 |     GET P2 INPUT        |        END
 |         |               |
 ----CHECK WIN CONDITION----
-          |
-      SHOW BOARD
+
 ```
 
 ## Classes
 1. TicTacToe
-    - creates a player
+    - creates players
     - creates a game board
     - keeps track of who's turn it is
     - Resets game
@@ -97,8 +96,10 @@
 
 2. Tile
     - stores whether it's an 'X', 'O' or empty
-    - handles onClick event, stores whether it's been clicked
-    - generates HTML for each tile and updates display based on input
+    - handles onClick event
+    - stores whether it's been clicked
+    - generates HTML for each tile
+    - updates display based on input
 
 ## Objects
 1. Game
@@ -134,6 +135,8 @@
 
 - Board
     - createBoard() ---> function to generate HTML for creating board
+             and create new tile()
+             push tile into array
     - `board.array` ---> array with data from tiles clicked contained in it
     - `board.tilesClicked` ---> stores count of tiles that have been clicked, increments each time onPress(true)
 
@@ -153,6 +156,7 @@
 ## MVC with Objects and Functions
 ### class Tic Tac Toe
 1. **Model**
+<!-- the model is the constructor -->
     - Game object
         - game.currentPlayer
         - game.score
@@ -165,6 +169,7 @@
         - player.totalWins
 
 2. **View**
+<!-- the view is a set of methods in the class -->
     - Board object
         - board.createBoard()
     - Game object
@@ -174,6 +179,7 @@
         - game.showScore()
 
 3. **Controller**
+<!-- the controller is a set of methods in the class -->
     - Game object
         - game.init()
         - game.restart()
