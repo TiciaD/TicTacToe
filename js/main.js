@@ -74,6 +74,7 @@ class TicTacToe {
             var sq = new Tile();
             this.boardArray.push(sq);
         };
+        this.showCurrentPlayer();
         let resetButton = document.getElementById("reset");
         resetButton.addEventListener("click", this.restart.bind(this) );
     }
@@ -142,10 +143,9 @@ class TicTacToe {
         this.currentPlayer = {name: 'Player 1', icon: 'X', value: 1, wins: 0};
         boardInnerRow.innerText = '';
         var myobj = document.getElementById("gameOver");
-        if(!myobj == null) {
+        if(myobj !== null) {
             myobj.remove();
         };
-        this.showCurrentPlayer();
         this.createBoard();
     };
     checkWin(){
