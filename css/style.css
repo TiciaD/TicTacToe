@@ -21,3 +21,9 @@
 .btn:hover {
   background-color: gray;
 }
+
+#reset {
+    height: 5vw;
+    width: 100%;
+    font-size: 2vw;
+}

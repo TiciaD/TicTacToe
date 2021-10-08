@@ -131,6 +131,7 @@
 - Square
     - onPress() ---> function that adds `player.symbol` to value of square
     - `square.value` ---> value stored in square, starts as empty string
+    - `square.player` ---> value of player's symbol, i.e. 1 or 10
     - updateView() ---> function to DISPLAY 'X', 'O' or blank based on state
     - isClicked() ---> true/false, has square been clicked once?
 
@@ -194,6 +195,7 @@
     - Square object
         - square.value
         - square.clicked
+        - square.player
 
 2. **View**
     - Square object

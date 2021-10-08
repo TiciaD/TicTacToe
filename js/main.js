@@ -1,3 +1,4 @@
+
 var game;
 function generateHTML({type, classes, text = '', specificType = '', id = '', parent = null}) {
     let element = document.createElement(type);
@@ -7,15 +8,12 @@ function generateHTML({type, classes, text = '', specificType = '', id = '', par
     if(parent) {
         parent.appendChild(element);
     }
-
     if(specificType) {
         element.type = specificType;
     }
-
-    if(id >= 0) {
+    if(id >= 0 || 'reset') {
         element.id = id;
     }
-
     return element
 };
 
@@ -46,6 +44,12 @@ function generateHTML({type, classes, text = '', specificType = '', id = '', par
     let boardInnerRow = generateHTML({ type: 'div', classes: 'row', parent: boardCol2});
     let boardCol4 = generateHTML({ type: 'div', classes: 'col', parent: boardRow });
 
+    // Reset Button
+    let resetContainer = generateHTML({ type: 'div', classes: 'container my-5', parent: app });
+    let resetRow = generateHTML({ type: 'div', classes: 'row', parent: resetContainer });
+    let resetCol = generateHTML({ type: 'div', classes: 'col-4 offset-4 d-flex justify-content-center', parent: resetRow });
+    let resetButton = generateHTML({ type: 'button', classes: 'btn btn-primary btn-lg', specificType: 'button', text: 'Restart', id: "reset", parent: resetCol });
+
 
 
 class TicTacToe {
@@ -70,11 +74,13 @@ class TicTacToe {
             var sq = new Tile();
             this.boardArray.push(sq);
         };
+        let resetButton = document.getElementById("reset");
+        resetButton.addEventListener("click", this.restart.bind(this) );
     }
     
 
     showWin(icon) {
-        let winnerCol = generateHTML({ type: 'h2', classes: 'col-12 d-flex justify-content-center mt-4', parent: playerRow });
+        let winnerCol = generateHTML({ type: 'h2', classes: 'col-12 d-flex justify-content-center mt-4', id: 'gameOver', parent: playerRow });
         if(icon == 'X') {
             winnerCol.innerText = 'Player 1 Wins!';
             console.log('Congratulations!');
@@ -92,7 +98,7 @@ class TicTacToe {
     showTie() {
         console.log('is Tie?');
         if(this.gameState.tilesClicked == 9) {
-            let winnerCol = generateHTML({ type: 'h2', classes: 'col-12 d-flex justify-content-center mt-4', parent: playerRow });
+            let winnerCol = generateHTML({ type: 'h2', classes: 'col-12 d-flex justify-content-center mt-4', id: 'gameOver', parent: playerRow });
             winnerCol.innerText = 'Tie!';
             console.log('Play Again!');
         }
@@ -132,10 +138,15 @@ class TicTacToe {
     };
     restart() {
         console.log('cleared board!')
-        this.boardArray = [];
-        this.tilesClicked = 0;
+        this.gameState.tilesClicked = 0;
         this.currentPlayer = {name: 'Player 1', icon: 'X', value: 1, wins: 0};
-        createBoard();
+        boardInnerRow.innerText = '';
+        var myobj = document.getElementById("gameOver");
+        if(!myobj == null) {
+            myobj.remove();
+        };
+        this.showCurrentPlayer();
+        this.createBoard();
     };
     checkWin(){
         let arr = this.boardArray;
@@ -147,12 +158,18 @@ class TicTacToe {
             arr[6].state.value + arr[7].state.value + arr[8].state.value === 3) {
                 console.log('X is Winner! Horizontal');
                 this.showWin('X');
+                for(let i = 0; i < 9; i++) {
+                this.boardArray[i].state.isClicked = true;
+                };
             }
             else if(arr[0].state.value + arr[1].state.value + arr[2].state.value === 30 || 
             arr[3].state.value + arr[4].state.value + arr[5].state.value === 30 ||
             arr[6].state.value + arr[7].state.value + arr[8].state.value === 30) {
                 console.log('O is Winner! Horizontal');
                 this.showWin('O');
+                for(let i = 0; i < 9; i++) {
+                this.boardArray[i].state.isClicked = true;
+                };
             }
 
             // check vertical
@@ -161,12 +178,18 @@ class TicTacToe {
             arr[2].state.value + arr[5].state.value + arr[8].state.value === 3) {
                 console.log('X is Winner! Vertical');
                 this.showWin('X');
+                for(let i = 0; i < 9; i++) {
+                this.boardArray[i].state.isClicked = true;
+                };
             }
             else if(arr[0].state.value + arr[3].state.value + arr[6].state.value === 30 || 
             arr[1].state.value + arr[4].state.value + arr[7].state.value === 30 ||
             arr[2].state.value + arr[5].state.value + arr[8].state.value === 30) {
                 console.log('O is Winner! Vertical');
                 this.showWin('O');
+                for(let i = 0; i < 9; i++) {
+                this.boardArray[i].state.isClicked = true;
+                };
             }
             
             // check diagonal
@@ -174,11 +197,17 @@ class TicTacToe {
             arr[6].state.value + arr[4].state.value + arr[2].state.value === 3) {
                 console.log('X is Winner! Diagonal');
                 this.showWin('X');
+                for(let i = 0; i < 9; i++) {
+                this.boardArray[i].state.isClicked = true;
+                };
             }
             else if(arr[0].state.value + arr[4].state.value + arr[8].state.value === 30 || 
             arr[6].state.value + arr[4].state.value + arr[2].state.value === 30) {
                 console.log('O is Winner! Diagonal');
                 this.showWin('O');
+                for(let i = 0; i < 9; i++) {
+                this.boardArray[i].state.isClicked = true;
+                };
             }
 
             else {
