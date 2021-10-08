@@ -157,8 +157,8 @@
 
 ## MVC with Objects and Functions
 ### class Tic Tac Toe
-1. **Model**
 <!-- the model is the constructor -->
+1. **Model**
     - Game object
         - game.currentPlayer
         - game.score
@@ -171,8 +171,8 @@
         - player.totalWins
         - square.isLastClick()
 
-2. **View**
 <!-- the view is a set of methods in the class -->
+2. **View**
     - Board object
         - board.createBoard()
     - Game object
@@ -181,8 +181,8 @@
         - game.showCurrentPlayer()
         - game.showScore()
 
-3. **Controller**
 <!-- the controller is a set of methods in the class -->
+3. **Controller**
     - Game object
         - game.init()
         - game.restart()
