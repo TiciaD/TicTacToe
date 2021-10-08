@@ -132,6 +132,7 @@
     - onPress() ---> function that adds `player.symbol` to value of square
     - `square.value` ---> value stored in square, starts as empty string
     - updateView() ---> function to DISPLAY 'X', 'O' or blank based on state
+    - isClicked() ---> true/false, has square been clicked once?
 
 - Board
     - createBoard() ---> function to generate HTML for creating board
@@ -167,6 +168,7 @@
         - player.name
         - player.symbol
         - player.totalWins
+        - square.isLastClick()
 
 2. **View**
 <!-- the view is a set of methods in the class -->
@@ -191,6 +193,7 @@
 1. **Model**
     - Square object
         - square.value
+        - square.clicked
 
 2. **View**
     - Square object
@@ -199,6 +202,5 @@
 3. **Controller**
     - Square object
         - square.onPress()
-        - square.isLastClick()
 
 ## Pseudocode
